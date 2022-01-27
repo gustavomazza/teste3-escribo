@@ -5,12 +5,13 @@ import 'package:teste3_escribo/modules/filmes/filmes_controller.dart';
 class FilmesView extends GetView<FilmesController> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        // itemCount: controller.filmes.length,
-        itemCount: 3,
+    return controller.obx((state) {
+      return ListView.builder(
+        itemCount: controller.filmes.length,
         itemBuilder: (context, index) {
+          final filme = controller.filmes[index];
           return ListTile(
-            title: Text('Filmes'),
+            title: Text(filme.title),
             trailing: IconButton(
               icon: Icon(
                 Icons.favorite_border,
@@ -19,6 +20,8 @@ class FilmesView extends GetView<FilmesController> {
               onPressed: () {},
             ),
           );
-        });
+        },
+      );
+    });
   }
 }

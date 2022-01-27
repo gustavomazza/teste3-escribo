@@ -75,10 +75,6 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-personagens() {
-  return Container();
-}
-
 favoritos() {
   return Container();
 }

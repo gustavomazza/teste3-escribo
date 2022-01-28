@@ -7,6 +7,7 @@ class FilmesController extends GetxController with StateMixin {
   final _repository = Get.find<FilmeRepository>();
   final _filmes = <FilmeModel>[].obs;
   List<FilmeModel> get filmes => _filmes.toList();
+  RxBool isFavorite = false.obs;
 
   @override
   onInit() async {
@@ -28,5 +29,10 @@ class FilmesController extends GetxController with StateMixin {
       change([], status: RxStatus.success());
       mensagem('', e.toString());
     }
+  }
+
+  changeFavorite(index){
+    isFavorite.value = !isFavorite.value;
+    
   }
 }

@@ -47,15 +47,17 @@ class _SiteOficialState extends State<SiteOficial> {
             ),
             Container(
               margin: const EdgeInsets.all(defaultMargin * 2),
-              child: ElevatedButton(
-                child: FluttermojiCircleAvatar(
-                  radius: 30,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
+              child: FloatingActionButton(
+                  backgroundColor: Colors.transparent,
+                  foregroundColor: Colors.transparent,
+                  elevation: 0,
+                  child: FluttermojiCircleAvatar(
+                    radius: 30,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            )
           ],
         ),
       ),

@@ -35,22 +35,24 @@ class AvatarEditView extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Site Oficial',
                         style: TextStyle(color: Colors.black),
                       ))),
             ),
             Container(
               margin: const EdgeInsets.all(defaultMargin * 2),
-              child: ElevatedButton(
-                child: FluttermojiCircleAvatar(
-                  radius: 30,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
+              child: FloatingActionButton(
+                backgroundColor: Colors.transparent,
+                foregroundColor: Colors.transparent,
+                elevation: 0,
+                  child: FluttermojiCircleAvatar(
+                    radius: 30,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            )
           ],
         ),
       ),
@@ -59,6 +61,7 @@ class AvatarEditView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 30),
             child: FluttermojiCircleAvatar(
+              
               radius: 75,
             ),
           ),

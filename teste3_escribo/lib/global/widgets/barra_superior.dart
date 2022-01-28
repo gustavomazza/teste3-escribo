@@ -22,27 +22,31 @@ class BarraSuperior extends StatelessWidget {
             color: Colors.blue,
           ),
           child: Center(
-              child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SiteOficial()));
-                  },
-                  child: Text(
-                    'Site Oficial',
-                    style: TextStyle(color: Colors.black),
-                  ))),
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SiteOficial()));
+              },
+              child: Text(
+                'Site Oficial',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          ),
         ),
         Container(
-          
           margin: const EdgeInsets.all(defaultMargin * 2),
-          child: ElevatedButton(
-            child: FluttermojiCircleAvatar(
-            radius: 30,
-          ), onPressed: (){
-            Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AvatarEditView()));
-          },)
-          
+          child: FloatingActionButton(
+              backgroundColor: Colors.transparent,
+              foregroundColor: Colors.transparent,
+              elevation: 0,
+              child: FluttermojiCircleAvatar(
+                radius: 30,
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AvatarEditView()));
+              }),
         )
       ],
     );

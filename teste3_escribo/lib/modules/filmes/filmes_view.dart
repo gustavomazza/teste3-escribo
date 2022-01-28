@@ -10,16 +10,21 @@ class FilmesView extends GetView<FilmesController> {
         itemCount: controller.filmes.length,
         itemBuilder: (context, index) {
           final filme = controller.filmes[index];
-          return ListTile(
+          return Obx(() => ListTile(
             title: Text(filme.title),
             trailing: IconButton(
-              icon: Icon(
-                Icons.favorite_border,
+              icon: controller.isFavorite.value ? const  Icon(
+                Icons.favorite,
                 color: Colors.red,
-              ),
-              onPressed: () {},
+              ) : const Icon(
+                  Icons.favorite_border,
+                  color: Colors.red,
+                ),
+              onPressed: () {
+                controller.changeFavorite(index);
+              },
             ),
-          );
+          ),);
         },
       );
     });

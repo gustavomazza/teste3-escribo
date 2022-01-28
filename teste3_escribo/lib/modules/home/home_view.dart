@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teste3_escribo/global/constants.dart';
+import 'package:teste3_escribo/global/widgets/barra_superior.dart';
 import 'package:teste3_escribo/modules/filmes/filmes_view.dart';
 import 'package:teste3_escribo/modules/home/home_controller.dart';
 import 'package:teste3_escribo/modules/personagens/personagens_view.dart';
-import 'package:teste3_escribo/modules/site_oficial/site_oficial.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -14,33 +14,7 @@ class HomeView extends GetView<HomeController> {
       child: Scaffold(
         body: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(defaultMargin * 2),
-                  width: Get.size.width * 0.3,
-                  height: Get.size.height * 0.05,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    color: Colors.blue,
-                  ),
-                  child: Center(
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SiteOficial()));
-                          },
-                          child: Text('Site Oficial'))),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(defaultMargin * 2),
-                  child: Text('Avatar'),
-                )
-              ],
-            ),
+            const BarraSuperior(),
             Padding(
               padding: const EdgeInsets.all(defaultPadding / 2),
               child: TabBar(

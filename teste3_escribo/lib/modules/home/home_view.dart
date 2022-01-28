@@ -4,6 +4,7 @@ import 'package:teste3_escribo/global/constants.dart';
 import 'package:teste3_escribo/modules/filmes/filmes_view.dart';
 import 'package:teste3_escribo/modules/home/home_controller.dart';
 import 'package:teste3_escribo/modules/personagens/personagens_view.dart';
+import 'package:teste3_escribo/modules/site_oficial/site_oficial.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -24,9 +25,15 @@ class HomeView extends GetView<HomeController> {
                     borderRadius: BorderRadius.circular(25),
                     color: Colors.blue,
                   ),
-                  child: const Center(
-                    child: Text('Site Oficial'),
-                  ),
+                  child: Center(
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SiteOficial()));
+                          },
+                          child: Text('Site Oficial'))),
                 ),
                 Container(
                   margin: const EdgeInsets.all(defaultMargin * 2),

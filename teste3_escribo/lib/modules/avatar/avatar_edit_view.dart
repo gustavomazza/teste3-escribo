@@ -15,7 +15,6 @@ class AvatarEditView extends StatelessWidget {
         platform != TargetPlatform.fuchsia;
 
     return Scaffold(
-    
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -38,17 +37,17 @@ class AvatarEditView extends StatelessWidget {
                       },
                       child: const Text(
                         'Site Oficial',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
                       ))),
             ),
             Container(
               margin: const EdgeInsets.all(defaultMargin * 2),
               child: FloatingActionButton(
-                backgroundColor: Colors.transparent,
-                foregroundColor: Colors.transparent,
-                elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  foregroundColor: Colors.transparent,
+                  elevation: 0,
                   child: FluttermojiCircleAvatar(
-                    
                     radius: 30,
                   ),
                   onPressed: () {
@@ -63,15 +62,12 @@ class AvatarEditView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 30),
             child: FluttermojiCircleAvatar(
-              
               radius: 75,
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
             child: FluttermojiCustomizer(
-              
-              //scaffoldHeight: 400,
               showSaveWidget: true,
               scaffoldWidth: isWeb ? 600 : 0,
             ),

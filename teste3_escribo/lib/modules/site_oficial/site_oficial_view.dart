@@ -84,7 +84,7 @@ class _SiteOficialState extends State<SiteOficial> {
                     value: _progress,
                     backgroundColor: Colors.blue,
                   ))
-              : SizedBox()
+              : const SizedBox()
         ],
       ),
     );

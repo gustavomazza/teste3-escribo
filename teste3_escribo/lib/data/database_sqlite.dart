@@ -21,7 +21,7 @@ class DBProvider {
     return _database!;
   }
 
-  // Create the database and the Employee table
+  // Create the database and the Favoritos table
   initDB() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, 'favoritos.db');
@@ -37,34 +37,28 @@ class DBProvider {
     });
   }
 
-  // Insert employee on database
+  // Insert favorito on database
   Future<int> createFavorito(FilmePersonagemModel newFilmePersonagem) async {
-    // await deleteAllFavoritos();
     final db = await database;
     var res = await db.insert('Favoritos', newFilmePersonagem.toJson());
 
     return res;
   }
 
-  // Delete all employees
-  // Future<int> deleteAllFavoritos() async {
-  //   final db = await database;
-  //   final res = await db.rawDelete('DELETE FROM Favoritos');
-
-  //   return res;
-  // }
   Future updateFavorito(favorito, nome) async {
     final db = await database;
-    final res = await db.rawUpdate("UPDATE Favoritos set favorito = '$favorito' where nome = '$nome'");
+    final res = await db.rawUpdate(
+        "UPDATE Favoritos set favorito = '$favorito' where nome = '$nome'");
 
     return;
   }
 
   Future<bool> getFavorito(nome) async {
     final db = await database;
-    final res = await db.rawQuery("SELECT * FROM Favoritos where nome = '$nome'");
+    final res =
+        await db.rawQuery("SELECT * FROM Favoritos where nome = '$nome'");
 
-    if (res.length == 0) {
+    if (res.isEmpty) {
       return false;
     } else {
       return true;
@@ -73,40 +67,34 @@ class DBProvider {
 
   Future<String> getFavoritoInt(nome) async {
     final db = await database;
-    final res = await db.rawQuery("SELECT favorito FROM Favoritos where nome = '$nome'");
+    final res = await db
+        .rawQuery("SELECT favorito FROM Favoritos where nome = '$nome'");
 
-    print('res' + res[0]['favorito'].toString());
     return res[0]['favorito'].toString();
   }
 
   Future<List<FilmePersonagemModel>> getAllFilmes() async {
     final db = await database;
-    final res = await db.rawQuery("SELECT * FROM Favoritos where tipo = 'filme'");
-
-    print('data: ' + res.toString());
+    final res =
+        await db.rawQuery("SELECT * FROM Favoritos where tipo = 'filme'");
 
     List<FilmePersonagemModel> list = res
-            .map<FilmePersonagemModel>(
-                (data) => FilmePersonagemModel.fromJson(data))
-            .toList();
-      
-    print('list: ' + list.toString());
+        .map<FilmePersonagemModel>(
+            (data) => FilmePersonagemModel.fromJson(data))
+        .toList();
 
     return list;
   }
 
   Future<List<FilmePersonagemModel>> getAllPersonagens() async {
     final db = await database;
-    final res = await db.rawQuery("SELECT * FROM Favoritos where tipo = 'personagem'");
-
-    print('data: ' + res.toString());
+    final res =
+        await db.rawQuery("SELECT * FROM Favoritos where tipo = 'personagem'");
 
     List<FilmePersonagemModel> list = res
-            .map<FilmePersonagemModel>(
-                (data) => FilmePersonagemModel.fromJson(data))
-            .toList();
-      
-    print('list: ' + list.toString());
+        .map<FilmePersonagemModel>(
+            (data) => FilmePersonagemModel.fromJson(data))
+        .toList();
 
     return list;
   }
@@ -115,21 +103,15 @@ class DBProvider {
     final db = await database;
     final res = await db.rawQuery("SELECT * FROM Favoritos where favorito = 1");
 
-    print('data: ' + res.toString());
-
     List<FilmePersonagemModel> list = res
-            .map<FilmePersonagemModel>(
-                (data) => FilmePersonagemModel.fromJson(data))
-            .toList();
-      
-    print('list: ' + list.toString());
+        .map<FilmePersonagemModel>(
+            (data) => FilmePersonagemModel.fromJson(data))
+        .toList();
 
     return list;
   }
 
-
-
-  Future close() async{
+  Future close() async {
     final db = await database;
     db.close();
   }

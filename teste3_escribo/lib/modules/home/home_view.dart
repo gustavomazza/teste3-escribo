@@ -25,12 +25,7 @@ class HomeView extends GetView<HomeController> {
                   labelColor: Colors.white,
                   unselectedLabelColor: Colors.grey,
                   labelStyle:
-                      TextStyle(fontSize: 11, fontWeight: FontWeight.bold ),
-                      
-                  // indicator: BoxDecoration(
-                  //     color: AppColor.blue,
-                  //     // borderRadius: BorderRadius.circular(25)
-                  //     ),
+                      TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
                   tabs: [
                     Tab(
                       text: 'FILMES',
@@ -45,15 +40,12 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               Expanded(
-                child: Container(
-                  // color: Colors.black,
-                  child: TabBarView(
-                    children: [
-                      FilmesView(),
-                      PersonagensView(),
-                      FavoritosView(),
-                    ],
-                  ),
+                child: TabBarView(
+                  children: [
+                    FilmesView(),
+                    PersonagensView(),
+                    FavoritosView(),
+                  ],
                 ),
               ),
             ],

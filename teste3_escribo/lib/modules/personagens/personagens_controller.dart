@@ -28,7 +28,6 @@ class PersonagensController extends GetxController with StateMixin {
       var listaPersonagensApi = await _repository.listarPersonagens();
 
       _personagens.addAll(listaPersonagensApi!);
-      print(_personagens[0].toJson());
 
       await listarPersonagensSQLite();
     } catch (e) {
@@ -45,7 +44,7 @@ class PersonagensController extends GetxController with StateMixin {
         FilmePersonagemModel favorito =
             FilmePersonagemModel(_personagens[i].name, 'personagem', 0);
         await DBProvider.db.createFavorito(favorito);
-        print(favorito);
+
       }
     }
 

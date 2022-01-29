@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teste3_escribo/modules/favoritos/favoritos_controller.dart';
-import 'package:teste3_escribo/modules/filmes/filmes_controller.dart';
 
 class FavoritosView extends GetView<FavoritosController> {
   @override
@@ -12,7 +11,7 @@ class FavoritosView extends GetView<FavoritosController> {
         itemBuilder: (context, index) {
           final favorito = controller.listarFavoritosBanco[index];
           return Container(
-            margin: EdgeInsets.all(7),
+            margin: const EdgeInsets.all(7),
             decoration: BoxDecoration(
               border: Border.all(color: controller.verificaCorBorda(favorito.tipo), width: 1),
               
@@ -20,7 +19,7 @@ class FavoritosView extends GetView<FavoritosController> {
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Center(
-                child: Text(favorito.nome, style: TextStyle(color: Colors.white,),),
+                child: Text(favorito.nome, style: const TextStyle(color: Colors.white,),),
               ),
             ),
           );

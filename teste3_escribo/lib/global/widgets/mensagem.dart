@@ -22,7 +22,7 @@ Future<bool> mensagem(String title, String middleText,
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
             color: Get.theme.primaryColor,
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(30),
             ),
             border: Border.all(color: Get.theme.primaryColor, width: 1.0),
@@ -31,7 +31,7 @@ Future<bool> mensagem(String title, String middleText,
             child: TextButton(
               child: Text(
                 textoOk,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                   fontSize: 17,
@@ -53,7 +53,7 @@ Future<bool> mensagem(String title, String middleText,
           height: 40,
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(5),
             ),
             border: Border.all(color: Get.theme.primaryColor, width: 1.0),

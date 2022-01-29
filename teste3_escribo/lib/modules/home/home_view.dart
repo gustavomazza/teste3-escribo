@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teste3_escribo/global/constants.dart';
 import 'package:teste3_escribo/global/widgets/barra_superior.dart';
+import 'package:teste3_escribo/modules/favoritos/favoritos_view.dart';
 import 'package:teste3_escribo/modules/filmes/filmes_view.dart';
 import 'package:teste3_escribo/modules/home/home_controller.dart';
 import 'package:teste3_escribo/modules/personagens/personagens_view.dart';
@@ -44,7 +45,7 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     FilmesView(),
                     PersonagensView(),
-                    favoritos(),
+                    FavoritosView(),
                   ],
                 ),
               ),
@@ -56,6 +57,4 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-favoritos() {
-  return Container();
-}
+

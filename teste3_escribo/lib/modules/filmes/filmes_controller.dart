@@ -4,25 +4,27 @@ import 'package:teste3_escribo/data/model/filmes_personagens_model.dart';
 import 'package:teste3_escribo/data/model/filme_model.dart';
 import 'package:teste3_escribo/data/repository/filme_repository.dart';
 import 'package:teste3_escribo/global/widgets/mensagem.dart';
+import 'package:teste3_escribo/modules/favoritos/favoritos_controller.dart';
 
 class FilmesController extends GetxController with StateMixin {
   final _repository = Get.find<FilmeRepository>();
   final _filmes = <FilmeModel>[].obs;
   List<FilmeModel> get filmes => _filmes.toList();
 
-  final _listaFilmesSQlite = <FilmePersonagemModel>[].obs;
-  List<FilmePersonagemModel> get listaFilmesSQlite =>
-      _listaFilmesSQlite.toList();
-  RxBool isFavorite = false.obs;
+  List<FilmePersonagemModel> listarFilmesBanco = [];
+
+  FavoritosController favoritosController = FavoritosController();
+ 
 
   @override
   onInit() async {
-    await listarFilmes();
+    await listarFilmesApi();
+    
 
     super.onInit();
   }
 
-  listarFilmes() async {
+  listarFilmesApi() async {
     change([], status: RxStatus.loading());
     _filmes.clear();
     try {
@@ -30,27 +32,50 @@ class FilmesController extends GetxController with StateMixin {
 
       _filmes.addAll(listaFilmesApi!);
       print(_filmes[0].toJson());
+      
+      await listarFilmesSQLite();
 
-      for (var i = 0; i < _filmes.length; i++) {
-        bool existeFavorito = await DBProvider.db.getFavorito(_filmes[i].title);
-        if (!existeFavorito) {
-          FilmePersonagemModel favorito =
-              FilmePersonagemModel(_filmes[i].title, 'filme', false);
-          await DBProvider.db.createFavorito(favorito);
-        }
-      }
-
-      var filmes = await DBProvider.db.getAllFilmes();
-      _listaFilmesSQlite.addAll(filmes);
-
-      change([], status: RxStatus.success());
+      
     } catch (e) {
       change([], status: RxStatus.success());
       mensagem('', e.toString());
     }
   }
 
-  changeFavorite(index) {
-    isFavorite.value = !isFavorite.value;
+  listarFilmesSQLite() async {
+    for (var i = 0; i < _filmes.length; i++) {
+        bool existeFavorito = await DBProvider.db.getFavorito(_filmes[i].title);
+        if (!existeFavorito) {
+          FilmePersonagemModel favorito =
+              FilmePersonagemModel(_filmes[i].title, 'filme', 0);
+          await DBProvider.db.createFavorito(favorito);
+          print(favorito);
+        }
+      }
+
+
+    await DBProvider.db.getAllFilmes().then((lista) => listarFilmesBanco = lista);
+    
+      
+
+      change([], status: RxStatus.success());
+
+  }
+
+  changeFavorito(nome) async {
+    String favorito = await DBProvider.db.getFavoritoInt(nome);
+    int favoritoInt;
+    if(favorito == '1'){
+      favoritoInt = 0;
+    }else{
+      favoritoInt = 1;
+    }
+    await DBProvider.db.updateFavorito(favoritoInt, nome);
+
+    await listarFilmesSQLite();
+
+   
+
+    
   }
 }

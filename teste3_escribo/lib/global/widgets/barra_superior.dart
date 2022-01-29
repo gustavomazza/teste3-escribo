@@ -4,6 +4,7 @@ import 'package:teste3_escribo/global/constants.dart';
 import 'package:teste3_escribo/modules/avatar/avatar_edit_view.dart';
 import 'package:teste3_escribo/modules/site_oficial/site_oficial_view.dart';
 import 'package:fluttermoji/fluttermoji.dart';
+import 'package:teste3_escribo/themes/app_color.dart';
 
 class BarraSuperior extends StatelessWidget {
   const BarraSuperior({Key? key}) : super(key: key);
@@ -19,7 +20,8 @@ class BarraSuperior extends StatelessWidget {
           height: Get.size.height * 0.05,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: Colors.blue,
+            color: AppColor.blue,
+            
           ),
           child: Center(
             child: TextButton(
@@ -27,9 +29,9 @@ class BarraSuperior extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SiteOficial()));
               },
-              child: Text(
+              child: const Text(
                 'Site Oficial',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ),

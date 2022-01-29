@@ -17,6 +17,7 @@ class FavoritosController extends GetxController with StateMixin {
   listarFavoritosSQLite() async {
     change([], status: RxStatus.loading());
     await DBProvider.db.getAllFavoritos().then((lista) => listarFavoritosBanco = lista);
+    update();
     change([], status: RxStatus.success());
   }
 

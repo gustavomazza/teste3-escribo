@@ -11,7 +11,7 @@ class PersonagensView extends GetView<PersonagensController> {
           itemBuilder: (context, index) {
             final personagem = controller.listarPersonagensBanco[index];
             return ListTile(
-              title: Text(personagem.nome),
+              title: Text(personagem.nome, style: const TextStyle(color: Colors.white)),
               trailing: IconButton(
                  icon: personagem.favorito == 1
                     ? const Icon(

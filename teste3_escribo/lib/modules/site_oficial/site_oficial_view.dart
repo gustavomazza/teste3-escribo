@@ -3,6 +3,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 import 'package:get/get.dart';
 import 'package:teste3_escribo/global/constants.dart';
+import 'package:teste3_escribo/themes/app_color.dart';
 
 class SiteOficial extends StatefulWidget {
   const SiteOficial({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _SiteOficialState extends State<SiteOficial> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.black,
         elevation: 0,
         automaticallyImplyLeading: false,
         title: Row(
@@ -31,7 +32,7 @@ class _SiteOficialState extends State<SiteOficial> {
               height: Get.size.height * 0.05,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
-                color: Colors.blue,
+                color: AppColor.blue,
               ),
               child: Center(
                 child: TextButton(
@@ -40,7 +41,7 @@ class _SiteOficialState extends State<SiteOficial> {
                   },
                   child: const Text(
                     'Site Oficial',
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

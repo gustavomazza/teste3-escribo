@@ -11,7 +11,7 @@ class FilmesView extends GetView<FilmesController> {
         itemBuilder: (context, index) {
           final filme = controller.listarFilmesBanco[index];
           return ListTile(
-              title: Text(filme.nome),
+              title: Text(filme.nome, style: const TextStyle(color: Colors.white),),
               trailing: IconButton(
                 icon: filme.favorito == 1
                     ? const Icon(

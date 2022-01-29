@@ -4,6 +4,7 @@ import 'package:teste3_escribo/data/model/filmes_personagens_model.dart';
 import 'package:teste3_escribo/data/model/personagem_model.dart';
 import 'package:teste3_escribo/data/repository/personagem_repository.dart';
 import 'package:teste3_escribo/global/widgets/mensagem.dart';
+import 'package:teste3_escribo/modules/favoritos/favoritos_controller.dart';
 
 class PersonagensController extends GetxController with StateMixin {
   final _repository = Get.find<PersonagemRepository>();
@@ -66,5 +67,9 @@ class PersonagensController extends GetxController with StateMixin {
     await DBProvider.db.updateFavorito(favoritoInt, nome);
 
     await listarPersonagensSQLite();
+
+    final _favoritosController = Get.find<FavoritosController>();
+
+    await _favoritosController.listarFavoritosSQLite();
   }
 }

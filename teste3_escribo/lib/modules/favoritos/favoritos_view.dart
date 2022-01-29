@@ -7,25 +7,25 @@ class FavoritosView extends GetView<FavoritosController> {
   @override
   Widget build(BuildContext context) {
     return controller.obx((state) {
-      return ListView.builder(
+      return controller.listarFavoritosBanco.isNotEmpty ? ListView.builder(
         itemCount: controller.listarFavoritosBanco.length,
         itemBuilder: (context, index) {
           final favorito = controller.listarFavoritosBanco[index];
           return Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(7),
             decoration: BoxDecoration(
-              border: Border.all(color: controller.verificaCorBorda(favorito.tipo), width: 5),
+              border: Border.all(color: controller.verificaCorBorda(favorito.tipo), width: 1),
               
             ),
             child: Padding(
-              padding: const EdgeInsets.all(25),
+              padding: const EdgeInsets.all(15),
               child: Center(
-                child: Text(favorito.nome),
+                child: Text(favorito.nome, style: TextStyle(color: Colors.white,),),
               ),
             ),
           );
         },
-      );
+      ) : const Center(child: Text('Você não possui nenhum favorito.', style: TextStyle(fontSize: 16, color: Colors.white),),);
     });
   }
 }
